@@ -1,15 +1,25 @@
-$url = 'https://bknet77.hust.edu.vn/login'
-$checkurl = 'https://bknet77.hust.edu.vn/status'
-$username = 'your_hust_username_aka_email_without_@sis_hust_edu_vn_or_@hust_edu_vn'
-$password = 'your_password'
+# PowerShell script to connect to Hust network
+
+$url = 'https://192.168.141.1/login'
+$checkurl = 'https://192.168.141.1/login'
+$username = ''
+$password = ''
 
 Write-Output "Hust connect script | $(Get-Date)"
 
-$CHECK = Invoke-WebRequest -Uri $checkurl
+$response = Invoke-WebRequest -Uri $checkurl -UseBasicParsing -Method GET
+$loggedIn = $response.Content -match "You are logged in"
 
-if ($CHECK.Content -like "*Error 302*") {
+if (-not $loggedIn) {
   Write-Output "Not logged in, connecting with username=$username"
-  Invoke-WebRequest -Uri $url -Method POST -Body "username=$username&password=$password"
+    
+  $body = @{
+    username = $username
+    password = $password
+  }
+
+  Invoke-WebRequest -Uri $url -Method POST -Body $body -UseBasicParsing | Out-Null
   Write-Output "Request sent."
 }
+
 Write-Output "Script ended."
