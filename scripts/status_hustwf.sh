@@ -15,4 +15,4 @@ timeleft_arr=()
 for i in $timeleft_str; do timeleft_arr+=($i); done
 
 # prometheus-like
-echo "hust_connectivity{ip=\"$ip\", time_connected=\"${timeleft_arr[0]}\", time_left=\"${timeleft_arr[1]}\", login_ip=\"${login_ip}\"} ${connectstatus}"
+echo "hust_connectivity{ip=\"$ip\", time_connected=\"${timeleft_arr[0]}\", time_left=\"${timeleft_arr[1]}\", bytes_up=\"${datavol_arr[0]} ${datavol_arr[1]}\", bytes_down=\"${datavol_arr[2]} ${datavol_arr[3]}\" , login_ip=\"${login_ip}\"} ${connectstatus}"
