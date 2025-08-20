@@ -12,7 +12,7 @@ logger "Hust_connect: start at $(date)"
 while [[ "$(curl -s 192.168.141.1/login | grep "You are logged in" | wc -l)" == "0" ]]; do
   echo "Not logged in, connecting with username=${username}"
   logger "Hust_connect: Not logged in, connecting with username=${username} to ${url}"
-  curl -s --request POST -d "username=${username}&password=${password}" $url
+  curl --insecure -s --request POST -d "username=${username}&password=${password}" $url
   echo "Request sent (remaining attempts: $attempts), expecting an Internet connection..."
   logger "Hust_connect: Request sent (remaining attempts: $attempts), expecting an Internet connection..."
   sleep 5s
