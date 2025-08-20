@@ -16,7 +16,7 @@ while [[ "$(curl -s 192.168.141.1/login | grep "You are logged in" | wc -l)" == 
   echo "Request sent (remaining attempts: $attempts), expecting an Internet connection..."
   logger "Hust_connect: Request sent (remaining attempts: $attempts), expecting an Internet connection..."
   sleep 5s
-  attempts-=1
+  attempts=$((attempts-1))
   if [[ $attempts -le 0 ]]; then
     break
   fi
