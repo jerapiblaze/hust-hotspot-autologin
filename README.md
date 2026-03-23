@@ -1,5 +1,8 @@
 # HUST Hotspot Auto-login script
 
+> [!IMPORTANT]
+> Update: I left HUST for post-graduate. Hotspot login experience in my new university is different, using WPA2-Enterprise, which lead to this script is no longer useful for me. If your university use WPA2-Enterprise too, and you need to connect your Linux server/pc, look for [this snippet](https://gist.github.com/jerapiblaze/dfaa4806688116a212b89ffa7f04f6a9). I will archive this repository. If you want to make contributions, when the login procedures changes, create a fork.
+
 I'm tired about our lab's internal network at [HUST](https://hust.edu.vn) being disconnected and requiring manual login every ~~24~~ 8 hours. This script will check if login is needed and automatically send login request without the need of entering username/password. To make it run periodicly, use `cronjob` (for Linux friends) or `Task Scheduler` (for Windows friends).
 
 ![demops](docs/demops.png)
